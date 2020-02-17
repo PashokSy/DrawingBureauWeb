@@ -1,35 +1,35 @@
-<!--<!DOCTYPE HTML>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <title>Getting Started: Serving Web Content</title>-->
-<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div>-->
-<!--    <form method="post">-->
-<!--        <input type="text" name="name" placeholder="Enter engineer name" />-->
-<!--        <input type="text" name="secondName" placeholder="Enter engineer second name" />-->
-<!--        <button type="submit">Add</button>-->
-<!--    </form>-->
-<!--</div>-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <form method="post">
+        <input type="text" name="name" placeholder="Enter engineer name" />
+        <input type="text" name="secondName" placeholder="Enter engineer second name" />
+        <button type="submit">Add</button>
+    </form>
+</div>
 
-<!--<div> Список инженеров:</div>-->
-<!--<table>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Name</th>-->
-<!--        <th>Second name</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:if="${engineers.empty}">-->
-<!--        <td colspan="2">There is no engineers</td>-->
-<!--    </tr>-->
-<!--    <tr th:each="engineer : ${engineers}">-->
-<!--        <td><span th:text="${engineer.getName()}"> Name </span></td>-->
-<!--        <td><span th:text="${engineer.getSecondName()}"> Second name</span></td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-<!--</body>-->
-<!--</html>-->
+<div> Список инженеров:</div>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Second name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${engineers.empty}">
+        <td colspan="2">There is no engineers</td>
+    </tr>
+    <tr th:each="engineer : ${engineers}">
+        <td><span th:text="${engineer.getName()}"> Name </span></td>
+        <td><span th:text="${engineer.getSecondName()}"> Second name</span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

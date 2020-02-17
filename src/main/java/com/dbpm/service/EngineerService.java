@@ -5,6 +5,8 @@ import com.dbpm.repository.EngineerDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EngineerService {
     private final EngineerDAO engineerDAO;
@@ -16,5 +18,8 @@ public class EngineerService {
 
     public Engineer create(Engineer engineer){
         return engineerDAO.create(engineer);
+    }
+    public List<Engineer> getAll(){
+        return engineerDAO.getAll();
     }
 }

@@ -1,4 +1,5 @@
-package com.dbpm;
+package com.dbpm.controller;
+
 
 import DBPM_classLibrary.Department;
 import DBPM_classLibrary.Engineer;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Controller
 public class MainController {
@@ -26,21 +28,20 @@ public class MainController {
 
     @GetMapping
     public String greeting(Model model) {
-//    model.addAttribute("engineers", );
+
+        model.addAttribute("engineers", engineerService.getAll());
         return "main";
     }
 
     @PostMapping
-    public String add(@RequestParam String name, @RequestParam String secondName, Model model){
-        Engineer engineer = new Engineer(name, secondName,
-                new Department(94,"Precisiaon mechanics"),
-                new Project("Protazan",
-                        LocalDate.of(2020,6,21), 7)
-        );
+    public String add(@RequestParam String name, @RequestParam String secondName, Model model) {
 
+        Engineer engineer = new Engineer();
+        engineer.setName(name);
+        engineer.setSecondName(secondName);
         engineerService.create(engineer);
 
-//        model.addAttribute("engineers", engineerRepo.findAll());
+        model.addAttribute("engineers", engineerService.getAll());
 
         return "main";
     }
