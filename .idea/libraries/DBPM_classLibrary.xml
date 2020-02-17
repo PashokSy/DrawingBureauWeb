@@ -2,8 +2,13 @@
   <library name="DBPM_classLibrary">
     <CLASSES>
       <root url="jar://D:/__SecondVishka/Kursova_Robota/DrawingBureau/out/artifacts/DB_lib/DB_lib.jar!/" />
+      <root url="file://D:/DrawingBureau" />
+      <root url="file://D:/DrawingBureau/out/production/kursova/DBPM_classLibrary" />
+      <root url="jar://D:/DrawingBureau/out/artifacts/kursova_jar/kursova.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://D:/DrawingBureau/src" />
+    </SOURCES>
   </library>
 </component>

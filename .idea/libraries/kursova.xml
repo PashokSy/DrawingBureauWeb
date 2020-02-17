@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="kursova">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../DrawingBureau/out/artifacts/kursova_jar/kursova.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
