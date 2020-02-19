@@ -15,23 +15,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class MainController {
+public class EngineerController {
 
     private EngineerService engineerService;
 
     @Autowired
-    public MainController(EngineerService engineerService) {
+    public EngineerController(EngineerService engineerService) {
         this.engineerService = engineerService;
     }
 
-    @GetMapping
-    public String greeting(Model model) {
+    @GetMapping("/engineers")
+    public String engineers(Model model) {
 
         model.addAttribute("engineers", engineerService.getAll());
-        return "main";
+        return "engineers";
     }
 
-    @PostMapping
+    @GetMapping("/add")
+    public String adding(Model model){
+
+        return "engineerAdd";
+    }
+
+    @PostMapping("/add")
     public String add(@RequestParam String name, @RequestParam String secondName, Model model) {
 
         Engineer engineer = new Engineer();
@@ -41,6 +47,6 @@ public class MainController {
 
         model.addAttribute("engineers", engineerService.getAll());
 
-        return "main";
+        return "engineerAdd";
     }
 }

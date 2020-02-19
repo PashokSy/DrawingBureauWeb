@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Engineers in design bureau</title>
+</head>
+<div style="background-color:lightblue"> <h1> Engineers list: </h1></div>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Second name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${engineers.empty}">
+        <td colspan="2">There is no engineers</td>
+    </tr>
+    <tr th:each="engineer : ${engineers}">
+        <td><span th:text="${engineer.getName()}"> Name </span></td>
+        <td><span th:text="${engineer.getSecondName()}"> Second name</span></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/add"> Add new Engineer </a>
+</body>
+</html>
