@@ -1,11 +1,11 @@
 package com.dbpm.repository;
 
-import DBPM_classLibrary.Engineer;
-import DBPM_classLibrary.IdCard;
+import DBPM_classLibrary.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,16 +26,18 @@ public class EngineerDAO implements AbstractDAO<Engineer> {
     @Transactional
     public Engineer create(Engineer engineer) {
         try {
-
-            Long lastInsert = jdbcTemplate.queryForObject("select engineerId from engineers ORDER BY engineerId DESC LIMIT 1" , Long.class) + 1;
-
+            Long lastInsert = jdbcTemplate.queryForObject("select id from engineers ORDER BY id DESC LIMIT 1", Long.class) + 1;
 
             jdbcTemplate.update(
-                    "insert into engineers(engineerId, idCard, name, secondName) values (?,?,?,?)", ps -> {
+                    "insert into engineers(id, id_card, name, second_name, department_name, room_num, project_name, rank_num) values (?,?,?,?,?,?,?,?)", ps -> {
                         ps.setLong(1, lastInsert);
-                        ps.setInt(2, 1234);
+                        ps.setInt(2, engineer.getIdCard().getNumber());
                         ps.setString(3, engineer.getName());
                         ps.setString(4, engineer.getSecondName());
+                        ps.setString(5, engineer.getDepartment().getName());
+                        ps.setLong(6, engineer.getRoom().getNumber());
+                        ps.setString(7, engineer.getProject().getName());
+                        ps.setLong(8, 3);
                     }
             );
 
@@ -53,15 +55,22 @@ public class EngineerDAO implements AbstractDAO<Engineer> {
             jdbcTemplate.queryForObject(
                     "select * from engineers where engineerId = ?", new Object[]{id}, (rs, rn) -> {
 
-
-                        engineer.setIdCard(new IdCard(rs.getInt("idCard")));
+                        engineer.setIdCard(new IdCard(rs.getInt("id_card")));
                         engineer.setName(rs.getString("name"));
-                        engineer.setSecondName(rs.getString("secondName"));
+                        engineer.setSecondName(rs.getString("second_name"));
+                        Department department = new Department();
+                        department.setName(rs.getString("department_name"));
+                        engineer.setDepartment(department);
+                        engineer.setRoom(new Room(rs.getInt("room_num")));
+                        Project project = new Project();
+                        project.setName(rs.getString("project_name"));
+                        engineer.setProject(project);
+                        engineer.setRoom(rs.getInt("room_num"));
 
                         return engineer;
                     }
             );
-        return engineer;
+            return engineer;
         } catch (DataAccessException e) {
             e.printStackTrace();
             return null;
@@ -86,11 +95,20 @@ public class EngineerDAO implements AbstractDAO<Engineer> {
 
             jdbcTemplate.query(
                     "select * from engineers", rs -> {
-                        while (rs.next()){
+                        while (rs.next()) {
+
                             Engineer engineer = new Engineer();
-                            engineer.setIdCard(new IdCard(rs.getInt("idCard")));
+                            engineer.setIdCard(new IdCard(rs.getInt("id_card")));
                             engineer.setName(rs.getString("name"));
-                            engineer.setSecondName(rs.getString("secondName"));
+                            engineer.setSecondName(rs.getString("second_name"));
+                            Department department = new Department();
+                            department.setName(rs.getString("department_name"));
+                            engineer.setDepartment(department);
+                            engineer.setRoom(new Room(rs.getInt("room_num")));
+                            Project project = new Project();
+                            project.setName(rs.getString("project_name"));
+                            engineer.setProject(project);
+                            engineer.setRoom(rs.getInt("room_num"));
 
                             engineers.add(engineer);
 

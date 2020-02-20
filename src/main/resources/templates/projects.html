@@ -43,26 +43,24 @@
 <span><p><a href="/" class="myButton">Home</a></span>
 
 <div class="container">
-    <h1>Engineers: </h1>
-    <a href="add" class="myButton">Add new Engineer</a>
+    <h1>Projects: </h1>
+    <a href="project/add" class="myButton">Add new Project</a>
     <br/><br/>
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Second name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Room</th>
-            <th scope="col">Project</th>
+            <th scope="col">Project name</th>
+            <th scope="col">Release date</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Done</th>
         </tr>
         </thead>
         <tbody>
-        <tr scope="row" th:each="engineer : ${engineers}">
-            <td th:text="${engineer.getName()}">Name</td>
-            <td th:text="${engineer.getSecondName()}">Second name</td>
-            <td th:text="${engineer.getDepartment().getName()}">Department</td>
-            <td th:text="${engineer.getRoom().getNumber()}">Room</td>
-            <td th:text="${engineer.getProject().getName()}">Project</td>
+        <tr scope="row" th:each="project : ${projects}">
+            <td th:text="${project.getName()}">Name</td>
+            <td th:text="${project.getReleaseDate().toString()}">Release date</td>
+            <td th:text="${project.getMaterialsCost()}">Cost</td>
+            <td th:text="${project.isDone()}">Done</td>
         </tr>
         </tbody>
     </table>

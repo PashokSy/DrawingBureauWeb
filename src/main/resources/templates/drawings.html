@@ -43,29 +43,8 @@
 <span><p><a href="/" class="myButton">Home</a></span>
 
 <div class="container">
-    <h1>Engineers: </h1>
-    <a href="add" class="myButton">Add new Engineer</a>
-    <br/><br/>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Second name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Room</th>
-            <th scope="col">Project</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr scope="row" th:each="engineer : ${engineers}">
-            <td th:text="${engineer.getName()}">Name</td>
-            <td th:text="${engineer.getSecondName()}">Second name</td>
-            <td th:text="${engineer.getDepartment().getName()}">Department</td>
-            <td th:text="${engineer.getRoom().getNumber()}">Room</td>
-            <td th:text="${engineer.getProject().getName()}">Project</td>
-        </tr>
-        </tbody>
-    </table>
+    <h1>Drawings: </h1>
+    <span><h1>COMING SOON</h1></span>
 </div>
 
 </body>

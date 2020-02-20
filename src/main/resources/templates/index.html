@@ -1,31 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Design Bureau 'Precision Mechanics'</title>
-    <link href="static/Site.css" rel="stylesheet" type="text/css"/>
+
     <style>
-        .navbar-right {
-            float: right !important;
-            margin-right: 15px;
-            margin-left: 15px;
+        .myButton {
+	    box-shadow: 0px 10px 14px -7px #3e7327;
+	    background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+	    background-color:#77b55a;
+	    border-radius:4px;
+	    border:1px solid #4b8f29;
+	    display:inline-block;
+	    cursor:pointer;
+	    color:#ffffff;
+	    font-family:Arial;
+	    font-size:13px;
+	    font-weight:bold;
+	    padding:6px 12px;
+	    text-decoration:none;
+	    text-shadow:0px 1px 0px #5b8a3c;
+        }
+        .myButton:hover {
+	    background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+	    background-color:#72b352;
+        }
+        .myButton:active {
+	    position:relative;
+	    top:1px;
         }
     </style>
 </head>
 <body>
 
-<div class="navbar navbar-incerse" role="navigation">
-    <a class="navbar-brand" href="/">
-        <span class="hidden-xs">Design Bureau 'Precision Mechanics'</span>
-        <div class="visible=xs">DBPM</div>
-    </a>
-</div>
-
 <div class="jumbotron">
     <div class="container">
         <h1>Welcome!</h1>
-        <p>If you want to view list of engineers</p>
-        <button class="pure-button"><a href="/engineers">Engineers</a></button>
+        <p>To chose what information you want to see, press one of the buttons below</p>
+        <a href="engineers" class="myButton">Engineers</a>
+        <a href="projects" class="myButton">Projects</a>
+        <a href="drawings" class="myButton">Drawings</a>
+        <a href="engineers" class="myButton">Departments</a>
     </div>
 </div>
 

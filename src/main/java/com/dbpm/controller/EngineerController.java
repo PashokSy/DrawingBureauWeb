@@ -1,9 +1,7 @@
 package com.dbpm.controller;
 
 
-import DBPM_classLibrary.Department;
-import DBPM_classLibrary.Engineer;
-import DBPM_classLibrary.Project;
+import DBPM_classLibrary.*;
 import com.dbpm.repository.EngineerDAO;
 import com.dbpm.service.EngineerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -26,7 +28,6 @@ public class EngineerController {
 
     @GetMapping("/engineers")
     public String engineers(Model model) {
-
         model.addAttribute("engineers", engineerService.getAll());
         return "engineers";
     }
@@ -38,15 +39,27 @@ public class EngineerController {
     }
 
     @PostMapping("/add")
-    public String add(@RequestParam String name, @RequestParam String secondName, Model model) {
+    public String add(@RequestParam int cardNum,
+                      @RequestParam String name,
+                      @RequestParam String secondName,
+                      @RequestParam String departmentName,
+                      @RequestParam int roomNum,
+                      @RequestParam String projectName,
+                      Model model) {
 
         Engineer engineer = new Engineer();
+        engineer.setIdCard(new IdCard(cardNum));
         engineer.setName(name);
         engineer.setSecondName(secondName);
+        engineer.setRoom(roomNum);
+        Department department = new Department();
+        department.setName(departmentName);
+        engineer.setDepartment(department);
+        engineer.setProject(new Project(projectName, LocalDate.now(), 7));
+
         engineerService.create(engineer);
 
         model.addAttribute("engineers", engineerService.getAll());
-
-        return "engineerAdd";
+        return "engineers";
     }
 }

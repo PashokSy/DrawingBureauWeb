@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Engineers in design bureau</title>
+    <title>Add Engineer</title>
 
     <style>
         .myButton {
@@ -37,36 +37,17 @@
     </style>
 
 </head>
-
 <body>
 
 <span><p><a href="/" class="myButton">Home</a></span>
 
-<div class="container">
-    <h1>Engineers: </h1>
-    <a href="add" class="myButton">Add new Engineer</a>
-    <br/><br/>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Second name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Room</th>
-            <th scope="col">Project</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr scope="row" th:each="engineer : ${engineers}">
-            <td th:text="${engineer.getName()}">Name</td>
-            <td th:text="${engineer.getSecondName()}">Second name</td>
-            <td th:text="${engineer.getDepartment().getName()}">Department</td>
-            <td th:text="${engineer.getRoom().getNumber()}">Room</td>
-            <td th:text="${engineer.getProject().getName()}">Project</td>
-        </tr>
-        </tbody>
-    </table>
+<div>
+    <form method="post">
+        <p><input type="text" name="projectName" placeholder="Enter project name" /></p>
+        <p><input type="date" value="2018-07-22" min="2018-01-01" max="2018-12-31" name="releaseDate" placeholder="Enter release date" /></p>
+        <p><input type="num" name="materialsCost" placeholder="Enter project cost" /></p>
+       <p><button type="submit" class="myButton">Add</button></p>
+    </form>
 </div>
-
 </body>
 </html>

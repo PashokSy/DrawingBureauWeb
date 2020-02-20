@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Add Engineer</title>
+
+    <style>
+        .myButton {
+	    box-shadow: 0px 10px 14px -7px #3e7327;
+	    background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+	    background-color:#77b55a;
+	    border-radius:4px;
+	    border:1px solid #4b8f29;
+	    display:inline-block;
+	    cursor:pointer;
+	    color:#ffffff;
+	    font-family:Arial;
+	    font-size:13px;
+	    font-weight:bold;
+	    padding:6px 12px;
+	    text-decoration:none;
+	    text-shadow:0px 1px 0px #5b8a3c;
+        }
+        .myButton:hover {
+	    background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+	    background-color:#72b352;
+        }
+        .myButton:active {
+	    position:relative;
+	    top:1px;
+        }
+    </style>
+
 </head>
 <body>
 
+<span><p><a href="/" class="myButton">Home</a></span>
 
 <div>
     <form method="post">
-        <input type="text" name="name" placeholder="Enter engineer name" />
-        <input type="text" name="secondName" placeholder="Enter engineer second name" />
-        <button type="submit">Add</button>
+        <p><input type="number" name="cardNum" placeholder="Enter number of IdCard" /></p>
+        <p><input type="text" name="name" placeholder="Enter engineer name" /></p>
+        <p><input type="text" name="secondName" placeholder="Enter engineer second name" /></p>
+        <p><input type="text" name="departmentName" placeholder="Enter department name" /></p>
+        <p><input type="number" name="roomNum" placeholder="Enter room number" /></p>
+        <p><input type="text" name="projectName" placeholder="Enter project name" /></p>
+       <p><button type="submit" class="myButton">Add</button></p>
     </form>
 </div>
 </body>
