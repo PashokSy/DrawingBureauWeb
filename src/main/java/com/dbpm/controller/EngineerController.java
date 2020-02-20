@@ -4,6 +4,7 @@ package com.dbpm.controller;
 import DBPM_classLibrary.*;
 import com.dbpm.repository.EngineerDAO;
 import com.dbpm.service.EngineerService;
+import com.dbpm.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import java.util.List;
 public class EngineerController {
 
     private EngineerService engineerService;
+    private ProjectService projectService;
 
     @Autowired
     public EngineerController(EngineerService engineerService) {
@@ -55,8 +57,10 @@ public class EngineerController {
         Department department = new Department();
         department.setName(departmentName);
         engineer.setDepartment(department);
-        engineer.setProject(new Project(projectName, LocalDate.now(), 7));
+        Project project = new Project(projectName, LocalDate.now(), 7);
+        engineer.setProject(project);
 
+        projectService.create(project);
         engineerService.create(engineer);
 
         model.addAttribute("engineers", engineerService.getAll());

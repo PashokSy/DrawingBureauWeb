@@ -27,9 +27,9 @@ public class DrawingController {
         this.drawingService = drawingService;
     }
 
-    @GetMapping("/engineers")
+    @GetMapping("/drawings")
     public String engineers(Model model) {
-        model.addAttribute("engineers", drawingService.getAll());
-        return "engineers";
+
+        return "index";
     }
 }
